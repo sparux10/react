@@ -1,0 +1,35 @@
+@import url(./components/Form/form.css);
+
+html {
+    scroll-behavior: auto;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFF;
+    font-family: Arial, sans-serif;
+    
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00a6ff;
+    border-radius: 6px;
+}
+
+
+a {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    color: black;
+    filter: drop-shadow(0 2px 4px #a1a1a1);
+    transition: 0.3s;
+    filter: none;
+}
+

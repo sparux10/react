@@ -1,0 +1,115 @@
+.full-area {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.form-user {
+    background-color: white;
+    border: 1px #ddd solid;
+    border-radius: 7px;
+    width: 50%;
+    margin: 10% 0;
+    height: max-content;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.form-user .label {
+    width: 100%;
+    text-align: start;
+    margin: 2% 0 2% 7%;
+}
+
+.form-user .error {
+    font-size: 0.8rem;
+    text-align: start;
+    margin:0 0 0 8%;
+    padding: 0;
+    color: red;
+}
+
+.form-user .input {
+    outline: none;
+    width: 90%;
+    height: 2.5rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-user input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.checkbox-container {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.form-user button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60%;
+    transition: background-color 0.3s ease;
+}
+
+.form-user button:hover {
+    background-color: #0056b3;
+}
+
+.form-user button:disabled {
+    background-color: #ccc;
+    cursor: default;
+}
+
+/* تحسين مظهر الـ <select> */
+select[name="roles"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin: 10px 0;
+    outline: none;
+  }
+  
+  /* تحسين مظهر الخيارات داخل الـ <select> */
+  select[name="roles"] option {
+    padding: 8px;
+    font-size: 16px;
+    background-color: #fff;
+  }
+  
+  /* حالة hover للخيارات */
+  select[name="roles"] option:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  
+.trytoaddx svg {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}

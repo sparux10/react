@@ -1,0 +1,150 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.user_profile {
+  display: flex;
+  align-items: start;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: 2rem 0;
+
+}
+.user_profile svg{
+  margin: 0 3px;
+}
+
+.image_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image_section img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.upload_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.upload_button:hover {
+  background-color: #0056b3;
+}
+
+.image_section button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.image_section button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.image_section button:disabled:hover {
+  background-color: #cccccc;
+}
+
+.image_section button:hover {
+  background-color: #0056b3;
+}
+
+.info_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90% ;
+  margin-left: 2rem;
+}
+.info_section label {
+  margin: 0.5rem 0;
+}
+.info_section label h4{
+  margin: 0;
+  display: inline;
+}
+.info_section .edit{
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 5rem;
+}
+
+.info_section .edit:hover {
+    background-color: #0056b3;
+}
+
+
+.input_field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width:768px) {
+  .user_profile{
+    flex-direction: column;
+    width: 90%;
+  }
+  .image_section {
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    margin: 2rem 0 1rem 0;
+    justify-content: space-between;
+  }
+  .image_section img {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+
+  .upload_button {
+    padding: 10px 20px;
+    margin: 0 0 1rem 0;
+    font-size: 0.6rem;
+  }
+  
+  .image_section button {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 0.6rem;
+  }
+}

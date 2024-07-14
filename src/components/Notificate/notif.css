@@ -1,0 +1,29 @@
+.quiq_notif {
+    position: fixed;
+    top: 15%;
+    right: 0;
+    background-color: white;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgb(221, 221, 221) 0px 2px 15px;
+    animation: 0.3s animate linear;
+}
+@keyframes animate {
+    0%{
+        opacity: 0;;
+    }
+    100%{
+        opacity: 1;;
+    }
+}
+
+.quiq_notif  p{
+    margin: 0 ;
+    font-size: 0.9rem;
+}
+
+
+
+
+

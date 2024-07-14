@@ -1,0 +1,71 @@
+.dropdown {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+}
+
+.dropdown-menu {
+  position: absolute; 
+  top: 3rem; 
+  left: -150%;
+  list-style: none;
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 4px 6px  #ddd;
+  background-color: #fff;
+  width: fit-content; 
+  z-index: 999; 
+  visibility: hidden;
+  height: 0;
+  transition: 0.2s ease;
+}
+
+.dropdown:hover > .dropdown-menu{
+  visibility: visible;
+  height: 120px;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -11px; /* لضبط موقع المثلث الخارجي */
+  right: 0;
+  border-width: 0 11px 11px 11px; /* إنشاء المثلث الخارجي */
+  border-style: solid;
+  border-color: transparent transparent #ccc transparent; /* لون الحدود الخارجية */
+  z-index: -1; /* لضمان أن يظهر خلف المثلث الداخلي */
+}
+
+.dropdown-menu::after {
+  content: '';
+  position: absolute; /* استخدام absolute لتموضع المثلث بشكل صحيح */
+  top: -10px; /* لضبط موقع المثلث أعلى القائمة */
+  right: 0;
+  border-width: 0 10px 10px 10px; /* إنشاء المثلث باستخدام border */
+  border-style: solid;
+  border-color: transparent transparent #fff transparent; /* تعيين لون المثلث */
+}
+
+.dropdown-menu ul{
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-menu ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}

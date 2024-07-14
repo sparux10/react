@@ -1,0 +1,36 @@
+.table_area{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+.custom-table {
+  width: 95%;
+  height: max-content;
+  margin-top: 60px;
+  border-collapse: collapse;
+}
+
+.header-row {
+  background-color: white;
+  color: black;
+  height: 3rem;
+}
+.header-row th {
+    width: 235px;
+
+}
+.row  {
+    height: 3rem;
+}
+.row  td{
+    text-align: center;
+    vertical-align: middle;
+}
+.even-row {
+  background-color: #f2f2f2;
+}
+
+.odd-row2 {
+  background-color: #ddd;
+}
