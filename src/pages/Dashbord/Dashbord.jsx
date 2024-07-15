@@ -2,6 +2,7 @@ import NavDash from "../../components/Navbar/NavDash"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import { Outlet } from 'react-router-dom'
 import "../../components/Table/table.css"
+import Picker from "../../components/Form/Picker"
 
 export default function Dashbord() {
 
@@ -13,6 +14,7 @@ export default function Dashbord() {
       <div  style={{display: "flex"}}>
         <Sidebar />
         <Outlet />
+        <Picker />
       </div>
     </div>
   )
