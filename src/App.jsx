@@ -13,6 +13,7 @@ import Products from './pages/Dashbord/read/Products';
 import Categories from './pages/Dashbord/read/Categories';
 import AddCategory from './pages/Dashbord/create/AddCategory';
 import AddProduct from './pages/Dashbord/create/AddProduct';
+import UserDetails from './pages/Dashbord/details/UserDetails';
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
         <Route element={<Users />} path='users' />
         <Route element={<Adduser />} path='users/add' />
         <Route element={<Update />} path='users/:id' />
+        <Route element={<UserDetails />} path='users/details/:id' />
 
         <Route element={<Products />} path='products' />
         <Route element={<AddProduct />} path='product/add' />

@@ -1,6 +1,5 @@
 .full-area {
   width: 100%;
-
 }
 
 .form-user {
@@ -14,9 +13,8 @@
   overflow: hidden;
   padding: 15px 0;
   border-bottom: 1px solid #e8e8e8;
+  align-items: center; /* تحسين لمحاذاة العناصر بشكل مركزي */
 }
-
-
 
 .form-user label {
   display: block;
@@ -40,13 +38,14 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  width: 50%;
+  width: 100%; /* تعديل ليأخذ عرضًا كاملاً */
   margin: 0;
   padding: 6px 8px;
   min-height: 2.25rem;
   font-size: 0.875rem;
 }
-.form-user input[type="number"]{
+
+.form-user input[type="number"] {
   width: 20%;
 }
 
@@ -63,7 +62,6 @@
 .checkbox-label {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 1em;
 }
 
@@ -95,7 +93,7 @@
 
 /* تحسين مظهر الـ <select> */
 select[name="roles"] {
-  width: 300px;
+  width: 100%; /* تعديل لاستغلال العرض بشكل كامل */
   padding: 8px;
   font-size: 16px;
   border-radius: 5px;
@@ -118,48 +116,40 @@ select[name="roles"] option:hover {
   cursor: pointer;
 }
 
-
-.trytoaddx svg {
-  position: absolute;
-  right: 0;
-  padding: 10px;
+.selected-image {
+  position: relative;
+  margin-top: 10px;
 }
 
-
-
-/*picker*/
-.color-size-picker {
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
-  margin: 0 auto;
-}
-
-.list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.list-container select {
-  width: 200px;
-  height: 150px;
+.selected-image img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.list-container button {
-  width: 60px;
+.delete-image-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #fff;
+  border: none;
   padding: 5px;
+  cursor: pointer;
+  color: red;
 }
 
-@media (max-width:768px) {
+
+@media (max-width: 768px) {
   .form-user .form-row {
     display: block;
   }
   .form-user .input {
-    width: 80%;
+    width: 100%; /* تعديل لاستغلال العرض بشكل كامل عند الشاشات الصغيرة */
   }
-  .form-user input[type="number"]{
+  .form-user input[type="number"] {
     width: 50%;
   }
 }

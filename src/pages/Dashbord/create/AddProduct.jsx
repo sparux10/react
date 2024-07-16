@@ -21,22 +21,22 @@ export default function AddProduct() {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [categories, setCategories] = useState([]);
-
     const [selected, setSelected] = useState([]);
-    const [colors, setcolors] = useState([]);
+    const [colors, setColors] = useState([]);
     const [sizes, setSizes] = useState([]);
-
 
     useEffect(() => {
         Axios.get("/categories/")
             .then(data => setCategories(data.data))
             .catch(err => console.log(err));
     }, []);
+
     useEffect(() => {
         Axios.get("/colors/")
-            .then(data => setcolors(data.data))
+            .then(data => setColors(data.data))
             .catch(err => console.log(err));
     }, []);
+
     useEffect(() => {
         Axios.get("/sizes/")
             .then(data => setSizes(data.data))
@@ -49,48 +49,37 @@ export default function AddProduct() {
         setLoad(true);
         setError(null);
 
-        const formData = new FormData();
-        formData.append("name", categoryName);
-        formData.append("description", description);
-        formData.append("price", price);
-        formData.append("discount", discount);
-        formData.append("brand", brand);
-        formData.append("ratings", ratings);
-        formData.append("stock", stock);
-        formData.append("category", category);
-        selected.forEach((item, index) => {
-            formData.append(`product_colors_sizes[${index}].color_id`, item.color_id);
-            formData.append(`product_colors_sizes[${index}].size_id`, item.size_id);
-        });
-        //formData.append("product_img", selectedImage);
 
-            const productData = {
-                name: categoryName,
-                brand: brand,
-                category: category,
-                product_colors_sizes: selected
-            };
+        const productData = {
+            name: categoryName,
+            description: description,
+            price: price,
+            discount: discount,
+            brand: brand,
+            ratings: ratings,
+            stock: stock,
+            category: category,
+            product_colors_sizes: selected,
+            //product_img: selectedImage
+        };
 
 
-        try {
-            const res = await Axios.post(`/products/`, productData );
-            console.log(res);
-
-            if (res.status === 201) {
-                setSuccess('Success');
-            } else {
-                setError("Failed to add the product.");
+            try {
+                const res = await Axios.post(`/products/`, productData);
+                console.log(res)
+                if (res.status === 201) {
+                    setSuccess('Success');
+                } else {
+                    setError("Failed to add the product.");
+                }
+            } catch (err) {
+                console.log(err);
+                setError("Error");
+            } finally {
+                setLoad(false);
+                setDisable(false);
             }
-        } catch (err) {
-            console.log(err);
-            setError("Error");
-        } finally {
-            setLoad(false);
-            setDisable(false);
-        }
     };
-
-    console.log(selected)
 
     return (
         <div className="full-area">
@@ -101,7 +90,6 @@ export default function AddProduct() {
                     <div className="form-row">
                         <label className="label">Name:</label>
                         <input
-                            width={50}
                             className="input"
                             type="text"
                             value={categoryName}
@@ -115,7 +103,6 @@ export default function AddProduct() {
                         <label className="label">Description:</label>
                         <textarea
                             className="input"
-                            type="text"
                             value={description}
                             placeholder="Description..."
                             required
@@ -180,13 +167,20 @@ export default function AddProduct() {
 
                     <div className="form-row">
                         <label className="label">Category:</label>
-                        <select name="roles" width={300} defaultValue={'select'} onChange={(e)=>setCategory(e.target.value)}>
-                            <option disabled hidden value={'select'} >Select to Change Role</option>
-                            {categories.map((item, index) => <option key={index} value={item.id}>{item.name}</option>)}
+                        <select
+                            className="input"
+                            defaultValue={'select'}
+                            onChange={(e) => setCategory(e.target.value)}
+                            required
+                        >
+                            <option disabled hidden value={'select'}>Select Category</option>
+                            {categories.map((item, index) => (
+                                <option key={index} value={item.id}>{item.name}</option>
+                            ))}
                         </select>
                     </div>
 
-                    <div className='img_btns'>
+                    <div className="img_btns">
                         <input
                             type="file"
                             accept="image/*"
@@ -201,6 +195,11 @@ export default function AddProduct() {
                                 <span><FontAwesomeIcon icon={faUpload} /> Select image</span>
                             )}
                         </label>
+                        {selectedImage && (
+                            <div>
+                                <img width="150px" src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                            </div>
+                        )}
                     </div>
 
                     <button type="submit" disabled={disable}>Add</button>

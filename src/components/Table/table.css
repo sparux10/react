@@ -1,36 +1,32 @@
 .table_area{
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .custom-table {
-  width: 95%;
-  height: max-content;
-  margin-top: 60px;
+  width: 90%;
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.header-row {
-  background-color: white;
-  color: black;
-  height: 3rem;
+.custom-table th, .custom-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
 }
-.header-row th {
-    width: 235px;
 
-}
-.row  {
-    height: 3rem;
-}
-.row  td{
-    text-align: center;
-    vertical-align: middle;
-}
-.even-row {
+.custom-table th {
   background-color: #f2f2f2;
 }
 
-.odd-row2 {
-  background-color: #ddd;
+.custom-table .even-row {
+  background-color: #f9f9f9;
+}
+
+.custom-table .odd-row {
+  background-color: #ffffff;
+}
+
+.custom-table svg {
+  margin: 0 3px;
 }
