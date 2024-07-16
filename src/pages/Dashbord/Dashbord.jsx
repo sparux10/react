@@ -14,7 +14,7 @@ export default function Dashbord() {
       <div  style={{display: "flex"}}>
         <Sidebar />
         <Outlet />
-        <Picker />
+        
       </div>
     </div>
   )
