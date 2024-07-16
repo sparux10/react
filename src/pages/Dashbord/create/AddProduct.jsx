@@ -58,11 +58,22 @@ export default function AddProduct() {
         formData.append("ratings", ratings);
         formData.append("stock", stock);
         formData.append("category", category);
-        formData.append("product_colors_sizes", selected);
+        selected.forEach((item, index) => {
+            formData.append(`product_colors_sizes[${index}].color_id`, item.color_id);
+            formData.append(`product_colors_sizes[${index}].size_id`, item.size_id);
+        });
         //formData.append("product_img", selectedImage);
 
+            const productData = {
+                name: categoryName,
+                brand: brand,
+                category: category,
+                product_colors_sizes: selected
+            };
+
+
         try {
-            const res = await Axios.post(`/products/`, formData);
+            const res = await Axios.post(`/products/`, productData );
             console.log(res);
 
             if (res.status === 201) {

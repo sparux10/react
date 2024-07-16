@@ -1,3 +1,5 @@
+import { faAdd, faRemove } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
 export default function ColorSizeSelector({ colors, sizes, selected, setSelected }) {
@@ -60,14 +62,14 @@ export default function ColorSizeSelector({ colors, sizes, selected, setSelected
         ))}
       </select>
 
-      <button onClick={handleSave}>Save</button>
+      <div onClick={handleSave}><FontAwesomeIcon icon={faAdd} /></div>
 
       <div>
         <h3>Selected pairs:</h3>
         {selected.map((pair, index) => (
           <div key={index}>
             Color: {getColorNameById(pair.color_id)} (ID: {pair.color_id}), Size: {getSizeNameById(pair.size_id)} (ID: {pair.size_id})
-            <button onClick={() => handleDelete(index)}>Delete</button>
+            <div onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faRemove}/> </div>
           </div>
         ))}
       </div>
