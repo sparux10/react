@@ -6,13 +6,13 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background-color: #F9FAFF;
+    background-color: white/* #F9FAFF */;
     font-family: Arial, sans-serif;
     
 }
 
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -54,7 +54,7 @@ export default function AddCategory() {
         <div className="full-area">
             <form className="form-user" encType="multipart/form-data" onSubmit={addCategory}>
                 <div>
-                    <h3>Create Category</h3>
+                    <h1>Create Category</h1>
 
                     <div className="form-row">
                         <label className="label">Name:</label>
@@ -80,15 +80,8 @@ export default function AddCategory() {
                         />
                     </div>
 
-                    <div className="img_btns">
-                        {selectedImage && (
-                            <div className="selected-image">
-                                <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
-                                <button className="delete-image-button" onClick={handleImageDelete}>
-                                    <FontAwesomeIcon icon={faTrashAlt} />
-                                </button>
-                            </div>
-                        )}
+                    <div className="img_area">
+                        <div className="form_upload_button">
                         <input
                             type="file"
                             accept="image/*"
@@ -96,13 +89,22 @@ export default function AddCategory() {
                             id="fileInput"
                             style={{ display: 'none' }}
                         />
-                        <label htmlFor="fileInput" className="upload_button">
+                        <label htmlFor="fileInput" >
                             {selectedImage ? (
                                 <span><FontAwesomeIcon icon={faCheck} /> Selected</span>
                             ) : (
                                 <span><FontAwesomeIcon icon={faUpload} /> Select image</span>
                             )}
                         </label>
+                        </div>
+                        {selectedImage && (
+                            <div className="selected-image">
+                                <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                                <div className="delete-image-button" onClick={handleImageDelete}>
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     <button type="submit" disabled={disable}>Add</button>

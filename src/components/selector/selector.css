@@ -1,0 +1,52 @@
+.selector_cs{
+    
+}
+.selector_cs select{
+    width: 200px;
+    margin: 0 20px 0 0;
+}
+@media (max-width:768px) {
+    .selector_cs select{
+        margin: 10px 0;
+    }
+    .selector_cs .add_line{
+        flex-direction: column;
+    }
+    .selector_cs .add {
+        width: fit-content;
+    }
+}
+.selector_cs .add svg{
+    padding: 0.7rem;
+    border-radius: 50%;
+    align-self: center;
+    cursor: pointer;
+}
+.selector_cs .add svg:hover{
+    background-color: #ddd;
+}
+.selector_cs .add_line{
+    display: flex;
+    
+}
+.selector_cs .selected_pairs{
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    min-height: 100px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px #e8e8e8;
+}
+.selector_cs .one_pair{
+    display: flex;
+    align-items: center;
+    margin: 5px 2px;
+}
+.selector_cs .one_pair svg{
+   margin: 0 7px;
+}
+.selector_cs .one_pair span{
+
+   font-weight: 600;
+   font-style: oblique;
+}

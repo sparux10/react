@@ -1,3 +1,4 @@
+
 .full-area {
   width: 100%;
 }
@@ -16,13 +17,12 @@
   align-items: center; /* تحسين لمحاذاة العناصر بشكل مركزي */
 }
 
-.form-user label {
+.form-user .label {
   display: block;
   margin: 8px 8px 8px 0;
-  min-width: 160px;
   width: 160px;
-  word-wrap: break-word;
-  line-height: 1;
+  font-weight: bolder;
+
 }
 
 .form-user .error {
@@ -33,12 +33,12 @@
   color: red;
 }
 
-.form-user .input {
+.form-user input {
   height: 2.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  width: 100%; /* تعديل ليأخذ عرضًا كاملاً */
+  width: 80%; 
   margin: 0;
   padding: 6px 8px;
   min-height: 2.25rem;
@@ -55,7 +55,7 @@
 }
 
 .form-user textarea {
-  width: 100%;
+  width: 80%;
   height: 150px;
 }
 
@@ -92,33 +92,53 @@
 }
 
 /* تحسين مظهر الـ <select> */
-select[name="roles"] {
-  width: 100%; /* تعديل لاستغلال العرض بشكل كامل */
+select {
+  width: 80%; /* تعديل لاستغلال العرض بشكل كامل */
   padding: 8px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #fff;
   margin: 10px 0;
-  outline: none;
+  
+}
+select:focus{
+  outline: 1px solid #007bff;
 }
 
 /* تحسين مظهر الخيارات داخل الـ <select> */
-select[name="roles"] option {
-  padding: 8px;
-  font-size: 16px;
+select option {
+  padding: 10px;
+  font-size: 0.825rem;
   background-color: #fff;
 }
 
 /* حالة hover للخيارات */
-select[name="roles"] option:hover {
+select option:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }
 
-.selected-image {
-  position: relative;
-  margin-top: 10px;
+
+/* selecte img */
+.form_upload_button{
+  background-color: #007bff;
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.825rem;
+  width: fit-content;
+  margin: 0 0 20px 0;
+}
+
+.form_upload_button:hover{
+  background-color: #0056b3;
+}
+.selected-image, .img_area {
+  margin: 20px 0;
+}
+.img_area,.form_selector {
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .selected-image img {
@@ -131,10 +151,8 @@ select[name="roles"] option:hover {
 }
 
 .delete-image-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: #fff;
+  padding: 0 10px;
+  width: 70px;
   border: none;
   padding: 5px;
   cursor: pointer;
@@ -146,8 +164,8 @@ select[name="roles"] option:hover {
   .form-user .form-row {
     display: block;
   }
-  .form-user .input {
-    width: 100%; /* تعديل لاستغلال العرض بشكل كامل عند الشاشات الصغيرة */
+  .form-user input {
+    width: 100%; 
   }
   .form-user input[type="number"] {
     width: 50%;

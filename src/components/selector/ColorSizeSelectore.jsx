@@ -1,6 +1,7 @@
 import { faAdd, faRemove } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import "./selector.css"
 
 export default function ColorSizeSelector({ colors, sizes, selected, setSelected }) {
   const [currentSelection, setCurrentSelection] = useState({ color_id: '', size_id: '' });
@@ -39,7 +40,8 @@ export default function ColorSizeSelector({ colors, sizes, selected, setSelected
   }
 
   return (
-    <div>
+    <div className='selector_cs'>
+      <div className='add_line'>
       <select value={currentSelection.color_id} onChange={handleColorChange}>
         <option hidden value="">
           Select color
@@ -62,16 +64,18 @@ export default function ColorSizeSelector({ colors, sizes, selected, setSelected
         ))}
       </select>
 
-      <div onClick={handleSave}><FontAwesomeIcon icon={faAdd} /></div>
-
+      <div className='add' onClick={handleSave}><FontAwesomeIcon color='green' icon={faAdd} /></div>
+</div>
       <div>
         <h3>Selected pairs:</h3>
+        <div  className='selected_pairs'>
         {selected.map((pair, index) => (
-          <div key={index}>
-            Color: {getColorNameById(pair.color_id)} (ID: {pair.color_id}), Size: {getSizeNameById(pair.size_id)} (ID: {pair.size_id})
-            <div onClick={() => handleDelete(index)}><FontAwesomeIcon icon={faRemove}/> </div>
+          <div className='one_pair' key={index}>
+            <span>Color : </span> {getColorNameById(pair.color_id)} , <span>Size : </span> {getSizeNameById(pair.size_id)} 
+            <div onClick={() => handleDelete(index)}><FontAwesomeIcon color='red' icon={faRemove}/> </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

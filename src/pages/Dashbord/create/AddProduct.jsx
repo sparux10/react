@@ -2,7 +2,7 @@ import { Axios } from "../../../API/Axios";
 import { useEffect, useState } from "react";
 import Loading from "../../../components/loader/Loading";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrashAlt, faUpload } from '@fortawesome/free-solid-svg-icons';
 import Notification from "../../../components/Notificate/Notification";
 import ColorSizeSelector from "../../../components/selector/ColorSizeSelectore"
 
@@ -80,12 +80,15 @@ export default function AddProduct() {
                 setDisable(false);
             }
     };
+    const handleImageDelete = () => {
+        setSelectedImage(null);
+    };
 
     return (
         <div className="full-area">
             <form className="form-user" encType="multipart/form-data" onSubmit={addProduct}>
                 <div>
-                    <h3>Create Product</h3>
+                    <h1>Create Product</h1>
 
                     <div className="form-row">
                         <label className="label">Name:</label>
@@ -180,7 +183,8 @@ export default function AddProduct() {
                         </select>
                     </div>
 
-                    <div className="img_btns">
+                    <div className="img_area">
+                        <div className="form_upload_button">
                         <input
                             type="file"
                             accept="image/*"
@@ -188,23 +192,29 @@ export default function AddProduct() {
                             id="fileInput"
                             style={{ display: 'none' }}
                         />
-                        <label htmlFor="fileInput" className="upload_button">
+                        <label htmlFor="fileInput">
                             {selectedImage ? (
                                 <span><FontAwesomeIcon icon={faCheck} /> Selected</span>
                             ) : (
                                 <span><FontAwesomeIcon icon={faUpload} /> Select image</span>
                             )}
                         </label>
+                        </div>
                         {selectedImage && (
-                            <div>
+                            <div className="selected-image">
                                 <img width="150px" src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                                <div className="delete-image-button" onClick={handleImageDelete}>
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </div>
                             </div>
                         )}
+                    </div> 
+                    <div className="form_selector">
+                    <ColorSizeSelector colors={colors} sizes={sizes} selected={selected} setSelected={setSelected} />
                     </div>
 
                     <button type="submit" disabled={disable}>Add</button>
                 </div>
-                <ColorSizeSelector colors={colors} sizes={sizes} selected={selected} setSelected={setSelected} />
             </form>
             {load && <Loading />}
             {success ? <Notification message="Success" /> : error && <Notification message={error} />}
