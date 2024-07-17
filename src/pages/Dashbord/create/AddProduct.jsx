@@ -25,6 +25,7 @@ export default function AddProduct() {
     const [colors, setColors] = useState([]);
     const [sizes, setSizes] = useState([]);
 
+
     useEffect(() => {
         Axios.get("/categories/")
             .then(data => setCategories(data.data))
@@ -50,35 +51,33 @@ export default function AddProduct() {
         setError(null);
 
 
-        const productData = {
-            name: categoryName,
-            description: description,
-            price: price,
-            discount: discount,
-            brand: brand,
-            ratings: ratings,
-            stock: stock,
-            category: category,
-            product_colors_sizes: selected,
-            //product_img: selectedImage
-        };
-
-
-            try {
-                const res = await Axios.post(`/products/`, productData);
-                console.log(res)
-                if (res.status === 201) {
-                    setSuccess('Success');
-                } else {
-                    setError("Failed to add the product.");
-                }
-            } catch (err) {
-                console.log(err);
-                setError("Error");
-            } finally {
-                setLoad(false);
-                setDisable(false);
+        const productData = new FormData();
+        productData.append('name', categoryName);
+        productData.append('description', description);
+        productData.append('price', price);
+        productData.append('discount', discount);
+        productData.append('brand', brand);
+        productData.append('ratings', ratings);
+        productData.append('stock', stock);
+        productData.append('category', category);
+        productData.append('product_colors_sizes', JSON.stringify(selected));  // assuming selected is an object or array
+        productData.append('product_img', selectedImage);
+        console.log(selected)
+        try {
+            const res = await Axios.post(`/products/`, productData);
+            console.log(res)
+            if (res.status === 201) {
+                setSuccess('Success');
+            } else {
+                setError("Failed to add the product.");
             }
+        } catch (err) {
+            console.log(err);
+            setError("Error");
+        } finally {
+            setLoad(false);
+            setDisable(false);
+        }
     };
     const handleImageDelete = () => {
         setSelectedImage(null);
@@ -185,20 +184,21 @@ export default function AddProduct() {
 
                     <div className="img_area">
                         <div className="form_upload_button">
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => setSelectedImage(e.target.files[0])}
-                            id="fileInput"
-                            style={{ display: 'none' }}
-                        />
-                        <label htmlFor="fileInput">
-                            {selectedImage ? (
-                                <span><FontAwesomeIcon icon={faCheck} /> Selected</span>
-                            ) : (
-                                <span><FontAwesomeIcon icon={faUpload} /> Select image</span>
-                            )}
-                        </label>
+                            <input
+                                type="file"
+                                name="product_img"
+                                accept="image/*"
+                                onChange={(e) => setSelectedImage(e.target.files[0])}
+                                id="fileInput"
+                                style={{ display: 'none' }}
+                            />
+                            <label htmlFor="fileInput">
+                                {selectedImage ? (
+                                    <span><FontAwesomeIcon icon={faCheck} /> Selected</span>
+                                ) : (
+                                    <span><FontAwesomeIcon icon={faUpload} /> Select image</span>
+                                )}
+                            </label>
                         </div>
                         {selectedImage && (
                             <div className="selected-image">
@@ -208,9 +208,9 @@ export default function AddProduct() {
                                 </div>
                             </div>
                         )}
-                    </div> 
+                    </div>
                     <div className="form_selector">
-                    <ColorSizeSelector colors={colors} sizes={sizes} selected={selected} setSelected={setSelected} />
+                        <ColorSizeSelector colors={colors} sizes={sizes} selected={selected} setSelected={setSelected} />
                     </div>
 
                     <button type="submit" disabled={disable}>Add</button>
